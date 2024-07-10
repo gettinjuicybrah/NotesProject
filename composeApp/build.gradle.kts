@@ -8,6 +8,8 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
 
+    alias(libs.plugins.kotlin.serialization)
+
     id("androidx.room") version "2.7.0-alpha04"
     id("com.google.devtools.ksp") version "2.0.0-1.0.21" //ksp for room annotation processing
 }
@@ -35,6 +37,8 @@ kotlin {
 
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+
+            implementation(libs.ktor.client.okhttp)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -56,10 +60,13 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
 
+            implementation(libs.bundles.ktor)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
             implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:1.8.1") //for v
+
+            implementation(libs.ktor.client.okhttp)
         }
     }
 }
